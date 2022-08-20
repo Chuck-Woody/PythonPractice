@@ -23,19 +23,20 @@ while file_line < group_size :
 while file_in:
 
     donater = file_in.readline().strip()
+    print(donater)
     dono_info = file_in.readline().strip().split() # creates an array of the amount and how many folks are getting it
+    if len(dono_info) < 1:
+        break
     donation = int(dono_info[0])
     splits = int(dono_info[1])
 
-    if splits == 0:
-        break
-
-    group[donater] -= donation
-    group[donater] += donation % splits
-    # loop through the dono list
-    for i in range(0, splits):
-        recipient = file_in.readline().strip()
-        group[recipient] += donation // splits
+    if splits != 0:
+        group[donater] -= donation
+        group[donater] += donation % splits
+        # loop through the dono list
+        for i in range(0, splits):
+            recipient = file_in.readline().strip()
+            group[recipient] += donation // splits
 file_in.close()
 
 for keys in group:
