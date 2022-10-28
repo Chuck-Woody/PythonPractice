@@ -1,3 +1,9 @@
+"""
+ID: kcp7ea1
+LANG: PYTHON3
+PROG: friday
+"""
+
 months =  {
   1: 31,
   2: 28,
@@ -51,13 +57,13 @@ def stringDate(dateObject):
 
 current = stringDate(curr_date)
 end = stringDate(END_DATE)
-rawdays = 1
+rawdays = 0
 
-while current != end:
+while (curr_date['year'] - 1900) < N:
   if (curr_date['day'] == 13):
     weekday_counter[rawdays % 7] += 1
-    print(f"{stringDate(curr_date)} | {rawdays} | max_days:{months[curr_date['month']]}")
-    print(weekday_counter)
+    # print(f"{stringDate(curr_date)} | {rawdays} | max_days:{months[curr_date['month']]}")
+    # print(weekday_counter)
 
   if ( curr_date['year'] % 4 == 0 and curr_date['year'] % 100 != 0):
     months[2] = 29
@@ -80,5 +86,8 @@ while current != end:
 
   current = stringDate(curr_date)
 
+  output = ""
 for key in weekday_counter:
-  file_out.write(f'{weekday_counter[key]} ')
+  output += str(weekday_counter[key]) + " "
+file_out.write(output.strip())
+file_out.write('\n')
