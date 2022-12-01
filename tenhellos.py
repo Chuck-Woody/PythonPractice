@@ -7,5 +7,5 @@ stdio.writeln('3rd Hello')
 
 i = 4
 while i <= 10:
-  stdio.writeln(str(i) + 'th Hello')
+  print(f'{i}th Hello')
   i += 1
